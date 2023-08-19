@@ -1,18 +1,21 @@
 package ru.ByCooper.generatorExamQuestion.service;
 
-import ru.ByCooper.generatorExamQuestion.data.JavaQuestionRepository;
-import ru.ByCooper.generatorExamQuestion.data.Question;
 import org.springframework.stereotype.Service;
+import ru.ByCooper.generatorExamQuestion.data.MathQuestionRepository;
+import ru.ByCooper.generatorExamQuestion.data.Question;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Random;
 
 @Service
-public class JavaQuestionService implements QuestionService {
+public class MathQuestionService implements QuestionService {
 
-    private final JavaQuestionRepository javaRepo;
+    private final MathQuestionRepository mathRepo;
 
-    public JavaQuestionService(JavaQuestionRepository repository) {
-        this.javaRepo = repository;
+    public MathQuestionService(MathQuestionRepository mathRepo) {
+        this.mathRepo = mathRepo;
     }
 
     private Question generate(String question, String answer) {
@@ -26,23 +29,23 @@ public class JavaQuestionService implements QuestionService {
 
     @Override
     public Question add(Question question) {
-        return javaRepo.add(question);
+        return mathRepo.add(question);
     }
 
     @Override
     public Question remove(Question question) {
-        return javaRepo.remove(question);
+        return mathRepo.remove(question);
     }
 
     @Override
     public Collection<Question> getAll() {
-        return javaRepo.getAll();
+        return mathRepo.getAll();
     }
 
     @Override
     public Question getRandomQuestion() {
         Random random = new Random();
-        List<Question> list = new ArrayList<>(javaRepo.getAll());
+        List<Question> list = new ArrayList<>(mathRepo.getAll());
         int item = random.nextInt(getAll().size());
         return list.get(item);
     }

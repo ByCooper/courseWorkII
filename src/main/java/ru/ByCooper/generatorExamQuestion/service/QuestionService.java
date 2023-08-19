@@ -1,6 +1,6 @@
 package ru.ByCooper.generatorExamQuestion.service;
 
-import ru.ByCooper.generatorExamQuestion.object.Question;
+import ru.ByCooper.generatorExamQuestion.data.Question;
 
 import java.util.Collection;
 
