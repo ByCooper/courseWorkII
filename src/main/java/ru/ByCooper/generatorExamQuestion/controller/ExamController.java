@@ -1,7 +1,7 @@
 package ru.ByCooper.generatorExamQuestion.controller;
 
 import org.springframework.web.bind.annotation.*;
-import ru.ByCooper.generatorExamQuestion.object.Question;
+import ru.ByCooper.generatorExamQuestion.data.Question;
 import ru.ByCooper.generatorExamQuestion.service.ExaminerServiceImpl;
 
 import java.util.Collection;

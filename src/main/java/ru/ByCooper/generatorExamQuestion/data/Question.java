@@ -1,4 +1,4 @@
-package ru.ByCooper.generatorExamQuestion.object;
+package ru.ByCooper.generatorExamQuestion.data;
 
 public class Question {
     private final String question;

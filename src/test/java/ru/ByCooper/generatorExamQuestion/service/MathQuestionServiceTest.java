@@ -5,7 +5,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import ru.ByCooper.generatorExamQuestion.data.JavaQuestionRepository;
+import ru.ByCooper.generatorExamQuestion.data.MathQuestionRepository;
 import ru.ByCooper.generatorExamQuestion.data.Question;
 
 import java.util.Collection;
@@ -17,24 +17,27 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-class JavaQuestionServiceTest {
+class MathQuestionServiceTest {
+
     @InjectMocks
-    private JavaQuestionService cut;
+    private MathQuestionService cut;
+
     @Mock
-    private JavaQuestionRepository cutMock;
+    private MathQuestionRepository cutMock;
+
 
     public Collection<Question> setTest() {
         Set<Question> questions = new HashSet<>();
-        questions.add(new Question("Что такое JAVA", "Это язык программирования"));
-        questions.add(new Question("Что такое i++", "Это инкремент"));
-        questions.add(new Question("Что такое for", "Это цикл"));
-        questions.add(new Question("Что такое Set", "Это множество"));
-        questions.add(new Question("Что такое --i", "Это декремент"));
+        questions.add(new Question("Что такое аксиома?", "Не доказываемая закономерность"));
+        questions.add(new Question("Что такое сумма чисел?", "Результат сложения двух и более чисел"));
+        questions.add(new Question("Что такое математика?", "Это гимнастика ума"));
+        questions.add(new Question("Что такое многочлен?", "Это сумма одночленов"));
+        questions.add(new Question("Что такое одночлен?", "Это произведение числовых и буквенных множителей, а также их степеней"));
         return questions;
     }
 
     public Question questionTest() {
-        return new Question("Что такое JAVA", "Это язык программирования");
+        return new Question("Что такое математика?", "Это гимнастика ума");
     }
 
 
@@ -43,8 +46,8 @@ class JavaQuestionServiceTest {
         //Подготовка входных данных
         when(cutMock.getAll()).thenReturn(setTest());
         when(cutMock.add(any())).thenReturn(questionTest());
-        String question = "Что такое JAVA";
-        String answer = "Это язык программирования";
+        String question = "Что такое математика?";
+        String answer = "Это гимнастика ума";
         Question actual = cut.add(new Question(question, answer));
         Question question1 = new Question(question, answer);
 
@@ -60,8 +63,8 @@ class JavaQuestionServiceTest {
     void testAdd() {
         //Подготовка входных данных
         when(cutMock.getAll()).thenReturn(setTest());
-        String question = "Что такое JAVA";
-        String answer = "Это язык программирования";
+        String question = "Что такое математика?";
+        String answer = "Это гимнастика ума";
         Question actual = cut.add(question, answer);
         Question question1 = new Question(question, answer);
 
@@ -77,8 +80,8 @@ class JavaQuestionServiceTest {
     void testRemove() {
         //Подготовка входных данных
         when(cutMock.remove(any())).thenReturn(questionTest());
-        String question = "Что такое JAVA";
-        String answer = "Это язык программирования";
+        String question = "Что такое математика?";
+        String answer = "Это гимнастика ума";
         Question question1 = new Question(question, answer);
         Question actual = cut.remove(question1);
 
