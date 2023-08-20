@@ -1,52 +1,58 @@
 package ru.ByCooper.generatorExamQuestion.service;
 
 import org.springframework.stereotype.Service;
-import ru.ByCooper.generatorExamQuestion.data.MathQuestionRepository;
 import ru.ByCooper.generatorExamQuestion.data.Question;
+import ru.ByCooper.generatorExamQuestion.exception.MathNullException;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 import java.util.Random;
 
 @Service
 public class MathQuestionService implements QuestionService {
 
-    private final MathQuestionRepository mathRepo;
-
-    public MathQuestionService(MathQuestionRepository mathRepo) {
-        this.mathRepo = mathRepo;
-    }
-
-    private Question generate(String question, String answer) {
-        return new Question(question, answer);
-    }
-
     @Override
     public Question add(String question, String answer) {
-        return generate(question, answer);
+        throw new MathNullException();
     }
 
     @Override
     public Question add(Question question) {
-        return mathRepo.add(question);
+        throw new MathNullException();
     }
 
     @Override
     public Question remove(Question question) {
-        return mathRepo.remove(question);
+        throw new MathNullException();
     }
 
     @Override
     public Collection<Question> getAll() {
-        return mathRepo.getAll();
+        throw new MathNullException();
     }
 
     @Override
     public Question getRandomQuestion() {
         Random random = new Random();
-        List<Question> list = new ArrayList<>(mathRepo.getAll());
-        int item = random.nextInt(getAll().size());
-        return list.get(item);
+        if (random.nextBoolean()) {
+            if (random.nextBoolean()) {
+                int a = random.nextInt(1000);
+                int b = random.nextInt(1000);
+                return new Question(a + " + " + b + " ?", (a + b) + " ");
+            } else {
+                int a = random.nextInt(1000);
+                int b = random.nextInt(1000);
+                return new Question(a + " - " + b + " ?", (a - b) + " ");
+            }
+        } else {
+            if (random.nextBoolean()) {
+                int a = random.nextInt(1000);
+                int b = random.nextInt(1000);
+                return new Question(a + " * " + b + " ?", (a * b) + " ");
+            } else {
+                double a = random.nextInt(1000);
+                double b = random.nextInt(1000);
+                return new Question(a + " : " + b + " ?", (a / b) + " ");
+            }
+        }
     }
 }
