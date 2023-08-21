@@ -2,7 +2,7 @@ package ru.ByCooper.generatorExamQuestion.service;
 
 import org.springframework.stereotype.Service;
 import ru.ByCooper.generatorExamQuestion.data.Question;
-import ru.ByCooper.generatorExamQuestion.exception.MathNullException;
+import ru.ByCooper.generatorExamQuestion.exception.UnsupportedOperationException;
 
 import java.util.Collection;
 import java.util.Random;
@@ -12,22 +12,22 @@ public class MathQuestionService implements QuestionService {
 
     @Override
     public Question add(String question, String answer) {
-        throw new MathNullException();
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public Question add(Question question) {
-        throw new MathNullException();
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public Question remove(Question question) {
-        throw new MathNullException();
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public Collection<Question> getAll() {
-        throw new MathNullException();
+        throw new UnsupportedOperationException();
     }
 
     @Override
